@@ -1,0 +1,82 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{float}
+\usepackage{multirow}
+\usepackage{subcaption}
+\usepackage[table]{xcolor}
+\usepackage[labelformat=parens,labelsep=quad,skip=3pt]{caption}
+
+
+
+\begin{document}
+	\title{Final Project: Gradient Descent CPS 580}
+	\makeatletter
+	
+	\author{Zackary McClamma\thanks{University of Dayton}
+	\thanks{Dept. of Electrical and Computer
+			Engineering, University of Dayton, 300 College Park, Dayton, OH
+			45469-0226, U.S.A. E-mail:
+			mcclammaz1@udayton.edu}}
+	
+	\makeatother
+	\author{Zackary McClamma}
+	\date{\today}
+	
+	\maketitle
+	\section{Code Operation Steps}
+	\begin{enumerate}
+		\item Run GradientDescent.py in IDE or in command prompt (I used PyCharm for running and testing this program)
+		\item When running the program will first prompt the user to input a 1 to train the model or a 2 to test the model NOTE: If the model has not been trained and the user attempts to test the model it will prompt the user to train the model first
+		\item Training The Model
+		\begin{enumerate}
+			\item After selecting to train the model there will be a pop up window that displays the user's file directory, from there the user should navigate to where the training data file is stored and select that file
+			\item Once the input data file is selected the user will be prompted to input a convergence value. The convergence value should be less than one and also greater than zero, it is recommended that the user choose a value no smaller than 0.0001, because any value smaller takes a long time to process.
+			\item The model will now print out the number of iterations it took to reach convregence and the amount of time it took to run the \textit{gradientDescent} function and the resulting theta values.
+			\item The user will then be prompted to input 0 to continue running the program or 1 to exit, selecting 0 will bring the user back to step 1. NOTE: If the user exits the program the model will have to be trained again before testing
+		\end{enumerate}
+	\item Testing the model
+		\begin{enumerate}
+			\item If the user selects the option to test the model and the model has been trained then the program will produce a pop up window of the user's file directory system where they should navigate to and select the file containing the testing data.
+			\item After giving the testing data file the program will use the model to predict the labels according to the inputs of the testing data file, after running the model the program will display the accuracy with which it was able to predict the label.
+			\item The user will again be prompted to input 0 to continue or 1 to exit, selecting 0 will bring the user back to step 1
+		\end{enumerate}
+	
+	\end{enumerate}
+
+	\section{Learned Parameters}
+	\qquad The learned parameters of this program are highly dependent on the convergence value given, I ran the program with the following convergence values and produced the results shown below.
+	\begin{itemize}
+		\item Convergence = 0.001
+		\begin{itemize}
+			\item Iterations to convergence = 6919
+			\item Time to run gradient descent = 774.9931812286377 ms
+			\item $\theta_{0} = -19.28208496385247$
+			\item $\theta_{1} = -2.681445452271275$
+			\item $\theta_{2} = 29.610017093508773$
+			\item Prediction accuracy with this model = 78.92061955469507\% 
+		\end{itemize}
+		\item Convergence = 0.0001
+		\begin{itemize}
+			\item Iterations to convergence = 478375
+			\item Time to run gradient descent = 285145.0538635254 ms
+			\item $\theta_{0} = -7.281305624101816$
+			\item $\theta_{1} = -81.16790636611564$
+			\item $\theta_{2} = 45.378536269181566$
+			\item Prediction accuracy with this model = 89.43772990015765\% 
+		\end{itemize}
+	\end{itemize}
+	\section{Additional Libraries Used}
+	\begin{itemize}
+		\item \textbf{numpy}: From this library I use the array, log, and dot product functionality. The array is used to store the input data because it makes the operations on the data more concise and optimal in the code. The log function is used to calculate the theta values, and the dot product is used to quickly run the hypothesis calculation for all of th input values($\theta_{0}x_{0} + \theta_{1}x_{1} + \theta_{2}x_{2}$).
+		\item \textbf{time}: This library is used to calculate the timing of training the model.
+		\item \textbf{copy}: This is used to make a copy of varibles since the assignment operator in python passes by reference. This was needed to store the previous theta values in gradient descent so that the new values could be tested for convergence.
+		\item \textbf{tkinter(Tk, filedialog)}: This library was used to open the pop up window to make a file selection
+	\end{itemize}
+	
+\end{document}
